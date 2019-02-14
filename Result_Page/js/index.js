@@ -126,8 +126,10 @@ var radarData = {
     // 	data : [65,59,90,81,56]
     // },
     {
-      fillColor: "rgba(151,187,205,0.5)",
-      strokeColor: "rgba(151,187,205,1)",
+      fillColor: "rgba(94, 236, 255, 0.4)",
+      strokeColor: "rgba(216, 271, 255, 1)",
+      // fillColor: "rgba(151,187,205,0.5)",
+      // strokeColor: "rgba(151,187,205,1)",
       data: [62, 48, 80, 39, 96]
     }
   ]
@@ -434,8 +436,9 @@ var myRadarChart = new Chart(ctx).Radar(radarData, radarOptions);
 var options = {
   scaleColor: false,
   trackColor: 'rgba(255,255,255,0.3)',
+  // default barColor: '#E7F7F5',
   barColor: '#E7F7F5',
-  lineWidth: 6,
+  lineWidth: 2,
   lineCap: 'butt',
   size: 95
 };

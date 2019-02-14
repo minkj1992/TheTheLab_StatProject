@@ -63,7 +63,7 @@ canvas {
 ======================================================
 */
 ul {
-  margin-bottom: 4em;
+  margin-bottom: 1em;
 }
 
 .chart {
@@ -83,6 +83,7 @@ ul {
   display: block;
   font-size: 2em;
   font-weight: normal;
+  line-height:1.2em
 }
 
 .chart canvas {
