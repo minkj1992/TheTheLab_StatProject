@@ -2,131 +2,135 @@
 // Radar Chart
 // ======================================================
 
+// chart animation
+$('#radarChart').hide();
+$('#radarChart').fadeIn(650);
+
 // Radar Chart Options
 var radarOptions = {
 
-	//Boolean - If we show the scale above the chart data
-	scaleOverlay : false,
+  //Boolean - If we show the scale above the chart data
+  scaleOverlay: false,
 
-	//Boolean - If we want to override with a hard coded scale
-	scaleOverride : false,
+  //Boolean - If we want to override with a hard coded scale
+  scaleOverride: false,
 
-	//** Required if scaleOverride is true **
-	//Number - The number of steps in a hard coded scale
-	scaleSteps : null,
-	//Number - The value jump in the hard coded scale
-	scaleStepWidth : null,
-	//Number - The centre starting value
-	scaleStartValue : null,
+  //** Required if scaleOverride is true **
+  //Number - The number of steps in a hard coded scale
+  scaleSteps: null,
+  //Number - The value jump in the hard coded scale
+  scaleStepWidth: null,
+  //Number - The centre starting value
+  scaleStartValue: null,
 
-	//Boolean - Whether to show lines for each scale point
-	scaleShowLine : true,
+  //Boolean - Whether to show lines for each scale point
+  scaleShowLine: true,
 
-	//String - Colour of the scale line
-	scaleLineColor : "#999",
+  //String - Colour of the scale line
+  scaleLineColor: "#999",
 
-	//Number - Pixel width of the scale line
-	scaleLineWidth : 0.5,
+  //Number - Pixel width of the scale line
+  scaleLineWidth: 0.5,
 
-	//Boolean - Whether to show labels on the scale
-	scaleShowLabels : false,
+  //Boolean - Whether to show labels on the scale
+  scaleShowLabels: false,
 
-	//Interpolated JS string - can access value
-	scaleLabel : "<%=value%>",
+  //Interpolated JS string - can access value
+  scaleLabel: "<%=value%>",
 
-	//String - Scale label font declaration for the scale label
-	scaleFontFamily : "'Arial'",
+  //String - Scale label font declaration for the scale label
+  scaleFontFamily: "'Arial'",
 
-	//Number - Scale label font size in pixels : 차트 간격
-	scaleFontSize : 25,
+  //Number - Scale label font size in pixels : 차트 간격
+  scaleFontSize: 25,
 
-	//String - Scale label font weight style
-	scaleFontStyle : "normal",
+  //String - Scale label font weight style
+  scaleFontStyle: "normal",
 
-	//String - Scale label font colour
-	scaleFontColor : "#666",
+  //String - Scale label font colour
+  scaleFontColor: "#666",
 
-	//Boolean - Show a backdrop to the scale label
-	scaleShowLabelBackdrop : true,
+  //Boolean - Show a backdrop to the scale label
+  scaleShowLabelBackdrop: true,
 
-	//String - The colour of the label backdrop
-	scaleBackdropColor : "rgba(255,255,255,0.75)",
+  //String - The colour of the label backdrop
+  scaleBackdropColor: "rgba(255,255,255,0.75)",
 
-	//Number - The backdrop padding above & below the label in pixels
-	scaleBackdropPaddingY : 2,
+  //Number - The backdrop padding above & below the label in pixels
+  scaleBackdropPaddingY: 2,
 
-	//Number - The backdrop padding to the side of the label in pixels
-	scaleBackdropPaddingX : 2,
+  //Number - The backdrop padding to the side of the label in pixels
+  scaleBackdropPaddingX: 2,
 
-	//Boolean - Whether we show the angle lines out of the radar
-	angleShowLineOut : true,
+  //Boolean - Whether we show the angle lines out of the radar
+  angleShowLineOut: true,
 
-	//String - Colour of the angle line
-	angleLineColor : "rgba(255,255,255,0.3)",
+  //String - Colour of the angle line
+  angleLineColor: "rgba(255,255,255,0.3)",
 
-	//Number - Pixel width of the angle line
-	angleLineWidth : 1,
+  //Number - Pixel width of the angle line
+  angleLineWidth: 1,
 
-	//String - Point label font declaration
-	pointLabelFontFamily : "'Arial'",
+  //String - Point label font declaration
+  pointLabelFontFamily: "'Arial'",
 
-	//String - Point label font weight
-	pointLabelFontStyle : "normal",
+  //String - Point label font weight
+  pointLabelFontStyle: "normal",
 
-	//Number - Point label font size in pixels
-	pointLabelFontSize : 12,
+  //Number - Point label font size in pixels
+  pointLabelFontSize: 12,
 
-	//String - Point label font colour
-	pointLabelFontColor : "#EFEFEF",
+  //String - Point label font colour
+  pointLabelFontColor: "#EFEFEF",
 
-	//Boolean - Whether to show a dot for each point
-	pointDot : true,
+  //Boolean - Whether to show a dot for each point
+  pointDot: true,
 
-	//Number - Radius of each point dot in pixels
-	pointDotRadius : 3,
+  //Number - Radius of each point dot in pixels
+  pointDotRadius: 3,
 
-	//Number - Pixel width of point dot stroke
-	pointDotStrokeWidth : 1,
+  //Number - Pixel width of point dot stroke
+  pointDotStrokeWidth: 1,
 
-	//Boolean - Whether to show a stroke for datasets
-	datasetStroke : true,
+  //Boolean - Whether to show a stroke for datasets
+  datasetStroke: true,
 
-	//Number - Pixel width of dataset stroke
-	datasetStrokeWidth : 1,
+  //Number - Pixel width of dataset stroke
+  datasetStrokeWidth: 1,
 
-	//Boolean - Whether to fill the dataset with a colour
-	datasetFill : true,
+  //Boolean - Whether to fill the dataset with a colour
+  datasetFill: true,
 
-	//Boolean - Whether to animate the chart
-	animation : true,
+  //Boolean - Whether to animate the chart
+  animation: true,
 
-	//Number - Number of animation steps
-	animationSteps : 60,
+  //Number - Number of animation steps
+  animationSteps: 60,
 
-	//String - Animation easing effect
-	animationEasing : "easeOutQuart",
+  //String - Animation easing effect
+  animationEasing: "easeOutQuart",
 
-	//Function - Fires when the animation is complete
-	onAnimationComplete : null
+  //Function - Fires when the animation is complete
+  onAnimationComplete: null
 
 }
 
 // Radar Data
 var radarData = {
-	// 죄측부터 순서대로 지식, 배짱, 재주, 싱냥함, 매력
-	labels : ["Knowledge","Guts","Proficiency","Kindness","Charm"],
-	datasets : [
-		// {
-		// 	fillColor : "rgba(220,220,220,0.5)",
-		// 	strokeColor : "rgba(220,220,220,1)",
-		// 	data : [65,59,90,81,56]
-		// },
-		{
-			fillColor : "rgba(151,187,205,0.5)",
-			strokeColor : "rgba(151,187,205,1)",
-			data : [62,48,80,39,96]
-		}
-	]
+  // 죄측부터 순서대로 지식, 배짱, 재주, 싱냥함, 매력
+  labels: ["Knowledge", "Guts", "Proficiency", "Kindness", "Charm"],
+  datasets: [
+    // {
+    // 	fillColor : "rgba(220,220,220,0.5)",
+    // 	strokeColor : "rgba(220,220,220,1)",
+    // 	data : [65,59,90,81,56]
+    // },
+    {
+      fillColor: "rgba(151,187,205,0.5)",
+      strokeColor: "rgba(151,187,205,1)",
+      data: [62, 48, 80, 39, 96]
+    }
+  ]
 }
 
 
@@ -344,12 +348,88 @@ var myRadarChart = new Chart(ctx).Radar(radarData, radarOptions);
 })();
 
 
-
 // ======================================================
 //  Pie Chart
 // ======================================================
 
-!function(){var a=function(a,b){var c=document.createElement("canvas");"undefined"!=typeof G_vmlCanvasManager&&G_vmlCanvasManager.initElement(c);var d=c.getContext("2d");if(c.width=c.height=b.size,a.appendChild(c),window.devicePixelRatio>1){var e=window.devicePixelRatio;c.style.width=c.style.height=[b.size,"px"].join(""),c.width=c.height=b.size*e,d.scale(e,e)}d.translate(b.size/2,b.size/2),d.rotate((-0.5+b.rotate/180)*Math.PI);var f=(b.size-b.lineWidth)/2;b.scaleColor&&b.scaleLength&&(f-=b.scaleLength+2);var g=function(a,b,c){c=Math.min(Math.max(0,c||1),1),d.beginPath(),d.arc(0,0,f,0,2*Math.PI*c,!1),d.strokeStyle=a,d.lineWidth=b,d.stroke()},h=function(){var a,c,e=24;d.lineWidth=1,d.fillStyle=b.scaleColor,d.save();for(var e=24;e>=0;--e)0===e%6?(c=b.scaleLength,a=0):(c=.6*b.scaleLength,a=b.scaleLength-c),d.fillRect(-b.size/2+a,0,c,1),d.rotate(Math.PI/12);d.restore()};Date.now=Date.now||function(){return+new Date};var i=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function(a){window.setTimeout(a,1e3/60)}}();this.clear=function(){d.clearRect(b.size/-2,b.size/-2,b.size,b.size)},this.draw=function(a){this.clear(),b.scaleColor&&h(),b.trackColor&&g(b.trackColor,b.lineWidth),d.lineCap=b.lineCap;var c;c="function"==typeof b.barColor?b.barColor(a):b.barColor,a>0&&g(c,b.lineWidth,a/100)}.bind(this),this.animate=function(a,c){var d=Date.now();b.onStart(a,c);var e=function(){var f=Math.min(Date.now()-d,b.animate),g=b.easing(this,f,a,c-a,b.animate);this.draw(g),b.onStep(a,c,g),f>=b.animate?b.onStop(a,c):i(e)}.bind(this);i(e)}.bind(this)},b=function(b,c){var d,e={barColor:"#ef1e25",trackColor:"#f9f9f9",scaleColor:"#dfe0e0",scaleLength:5,lineCap:"round",lineWidth:3,size:110,rotate:0,animate:1e3,renderer:a,easing:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b+c:-d/2*(--b*(b-2)-1)+c},onStart:function(){},onStep:function(){},onStop:function(){}},f={},g=0,h=function(){this.el=b,this.options=f;for(var a in e)e.hasOwnProperty(a)&&(f[a]=c&&"undefined"!=typeof c[a]?c[a]:e[a],"function"==typeof f[a]&&(f[a]=f[a].bind(this)));f.easing="string"==typeof f.easing&&"undefined"!=typeof jQuery&&jQuery.isFunction(jQuery.easing[f.easing])?jQuery.easing[f.easing]:e.easing,d=new f.renderer(b,f),d.draw(g),b.dataset&&b.dataset.percent&&this.update(parseInt(b.dataset.percent,10))}.bind(this);this.update=function(a){return a=parseInt(a,10),f.animate?d.animate(g,a):d.draw(a),g=a,this}.bind(this),h()};window.EasyPieChart=b}();
+! function() {
+  var a = function(a, b) {
+      var c = document.createElement("canvas");
+      "undefined" != typeof G_vmlCanvasManager && G_vmlCanvasManager.initElement(c);
+      var d = c.getContext("2d");
+      if (c.width = c.height = b.size, a.appendChild(c), window.devicePixelRatio > 1) {
+        var e = window.devicePixelRatio;
+        c.style.width = c.style.height = [b.size, "px"].join(""), c.width = c.height = b.size * e, d.scale(e, e)
+      }
+      d.translate(b.size / 2, b.size / 2), d.rotate((-0.5 + b.rotate / 180) * Math.PI);
+      var f = (b.size - b.lineWidth) / 2;
+      b.scaleColor && b.scaleLength && (f -= b.scaleLength + 2);
+      var g = function(a, b, c) {
+          c = Math.min(Math.max(0, c || 1), 1), d.beginPath(), d.arc(0, 0, f, 0, 2 * Math.PI * c, !1), d.strokeStyle = a, d.lineWidth = b, d.stroke()
+        },
+        h = function() {
+          var a, c, e = 24;
+          d.lineWidth = 1, d.fillStyle = b.scaleColor, d.save();
+          for (var e = 24; e >= 0; --e) 0 === e % 6 ? (c = b.scaleLength, a = 0) : (c = .6 * b.scaleLength, a = b.scaleLength - c), d.fillRect(-b.size / 2 + a, 0, c, 1), d.rotate(Math.PI / 12);
+          d.restore()
+        };
+      Date.now = Date.now || function() {
+        return +new Date
+      };
+      var i = function() {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(a) {
+          window.setTimeout(a, 1e3 / 60)
+        }
+      }();
+      this.clear = function() {
+        d.clearRect(b.size / -2, b.size / -2, b.size, b.size)
+      }, this.draw = function(a) {
+        this.clear(), b.scaleColor && h(), b.trackColor && g(b.trackColor, b.lineWidth), d.lineCap = b.lineCap;
+        var c;
+        c = "function" == typeof b.barColor ? b.barColor(a) : b.barColor, a > 0 && g(c, b.lineWidth, a / 100)
+      }.bind(this), this.animate = function(a, c) {
+        var d = Date.now();
+        b.onStart(a, c);
+        var e = function() {
+          var f = Math.min(Date.now() - d, b.animate),
+            g = b.easing(this, f, a, c - a, b.animate);
+          this.draw(g), b.onStep(a, c, g), f >= b.animate ? b.onStop(a, c) : i(e)
+        }.bind(this);
+        i(e)
+      }.bind(this)
+    },
+    b = function(b, c) {
+      var d, e = {
+          barColor: "#ef1e25",
+          trackColor: "#f9f9f9",
+          scaleColor: "#dfe0e0",
+          scaleLength: 5,
+          lineCap: "round",
+          lineWidth: 3,
+          size: 110,
+          rotate: 0,
+          animate: 1e3,
+          renderer: a,
+          easing: function(a, b, c, d, e) {
+            return (b /= e / 2) < 1 ? d / 2 * b * b + c : -d / 2 * (--b * (b - 2) - 1) + c
+          },
+          onStart: function() {},
+          onStep: function() {},
+          onStop: function() {}
+        },
+        f = {},
+        g = 0,
+        h = function() {
+          this.el = b, this.options = f;
+          for (var a in e) e.hasOwnProperty(a) && (f[a] = c && "undefined" != typeof c[a] ? c[a] : e[a], "function" == typeof f[a] && (f[a] = f[a].bind(this)));
+          f.easing = "string" == typeof f.easing && "undefined" != typeof jQuery && jQuery.isFunction(jQuery.easing[f.easing]) ? jQuery.easing[f.easing] : e.easing, d = new f.renderer(b, f), d.draw(g), b.dataset && b.dataset.percent && this.update(parseInt(b.dataset.percent, 10))
+        }.bind(this);
+      this.update = function(a) {
+        return a = parseInt(a, 10), f.animate ? d.animate(g, a) : d.draw(a), g = a, this
+      }.bind(this), h()
+    };
+  window.EasyPieChart = b
+}();
 
 var options = {
   scaleColor: false,
@@ -362,7 +442,24 @@ var options = {
 
 window.addEventListener('DOMContentLoaded', function() {
   var charts = [];
-  [].forEach.call(document.querySelectorAll('.chart'),  function(el) {
+  [].forEach.call(document.querySelectorAll('.chart'), function(el) {
     charts.push(new EasyPieChart(el, options));
   });
 });
+
+var elem = document.getElementById('radarChart');
+var elem = document.getElementById('pieChart');
+
+
+
+// chart animation
+$('#pieChart1').hide();
+$('#pieChart1').delay(600).fadeIn(1000);
+$('#pieChart2').hide();
+$('#pieChart2').delay(300).fadeIn(1000);
+$('#pieChart3').hide();
+$('#pieChart3').delay(100).fadeIn(1000);
+$('#pieChart4').hide();
+$('#pieChart4').delay(300).fadeIn(1000);
+$('#pieChart5').hide();
+$('#pieChart5').delay(600).fadeIn(1000);
