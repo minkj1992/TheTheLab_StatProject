@@ -13,30 +13,67 @@
 
 <body>
 
+
   <div id="large-header" class="large-header">
     <canvas id="demo-canvas"></canvas>
 
-    <div class="container">
-    <h1>Human Parameter Analyzer
-      <small>with preview</small>
-    </h1>
-
-
-    <div class="avatar-upload">
-
-      <div class="avatar-edit">
-        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-        <label for="imageUpload"></label>
+    <div id="loadingText" class="wrap">
+    <div class="bg">
+      <div class="loading">
+        <span class="title">Analyzing</span>
+        <span class="text">Human parameter</span>
       </div>
+    </div>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-      <div class="avatar-preview">
-        <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+
+
+    <div id="loading" class="process-flow">
+    <div class="graph">
+      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16"></circle></svg><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16"></circle></svg><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16"></circle></svg>
+    </div>
+    <div class="point"></div>
+  </div>
+
+
+    <div class="container">
+
+      <div id="package">
+
+        <h1>Human Parameter Analyzer
+          <small>with preview</small>
+        </h1>
+
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+          </div>
+
+          <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);"></div>
+          </div>
+
+          <button onclick="removeHUD()">Analysis</button>
         </div>
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </div>
-  </div>
+
+
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
   <script src='https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/js/EasePack.min.js'></script>

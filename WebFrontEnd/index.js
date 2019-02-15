@@ -215,3 +215,23 @@ $("#imageUpload").change(function() {
   }
 
 })();
+
+
+// loading 요소들 숨겨 놓기
+$('#loading').hide();
+$('#loadingText').hide();
+
+// HUD fadeout으로 제거, jQuery 함수 사용
+function removeHUD() {
+  var elem = document.getElementById('package');
+  var elem = document.getElementById('loading');
+  var elem = document.getElementById('loadingText');
+
+  $('#package').fadeOut(650);
+
+  $('#loading').delay(1100).fadeIn(1000);
+
+  $('#loadingText').delay(500).fadeIn(650);
+
+  return false;
+}
